@@ -25,7 +25,7 @@ const Popup = () => {
             <img src={popupImg} alt="Newsletter" />
           </div>
           <div className="popup-right">
-            <h2>Sign Up to Our Newsletter</h2>
+            <h2>Sign Up to Get the trending products</h2>
             <p>
               Be the first to get the latest news about trends, promotions, and
               much more!

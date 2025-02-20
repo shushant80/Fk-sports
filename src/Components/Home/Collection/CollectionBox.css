@@ -97,17 +97,23 @@
 
 .col-h3 span {
   font-weight: bolder;
+  color: #ffffff;
 }
 
 .collection h5 {
   font-size: 14px;
   text-transform: uppercase;
   font-weight: 500;
+  padding: 10px 20px; /* Add padding around the text */
+  background-color: rgb(0, 0, 0); /* Black background behind the text */
+  border-radius: 5px; /* Rounded corners for the entire box */
+  border: 2px solid white; /* White border around the text box */
 }
+
 
 .collection a {
   text-decoration: none;
-  color: black;
+  color: rgb(255, 249, 249);
 }
 
 @media screen and (max-width: 1210px) {
@@ -152,4 +158,12 @@
   .box2 {
     height: 150px;
   }
+}
+.col-p {
+  color: #ffffff;  /* Dark black color */
+}
+.col-h3 {
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adds a shadow behind the text */
 }

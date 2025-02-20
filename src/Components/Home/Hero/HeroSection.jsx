@@ -1,18 +1,8 @@
-import React, { useState } from "react";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
-
-import "./HeroSection.css";
-import { Model } from "../../Model/Model";
+import React from "react";
 import { Link } from "react-router-dom";
+import "./HeroSection.css";
 
-const HeroSection = () => {
-  const [tshirtColor, setTshirtColor] = useState("red");
-
-  const changeColor = (color) => {
-    setTshirtColor(color);
-  };
-
+const GymHeroSection = () => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -21,63 +11,37 @@ const HeroSection = () => {
   };
 
   return (
-    <>
-      <div className="heroMain">
-        <div className="sectionleft">
-          <p>New Trend</p>
-          <h1>Summer Sale Stylish</h1>
-          <span>Limited Time Offer - Up to 60% off & Free Shipping</span>
-          <div className="heroLink">
-            <Link to="/shop" onClick={scrollToTop}>
-              <h5>Discover More</h5>
-            </Link>
-          </div>
-        </div>
-        <div className="sectionright">
-          <Canvas
-            className="canvasModel"
-            camera={{ position: [0, 5, 15], fov: 50 }}
-          >
-            <ambientLight intensity={0.5} />
-            <directionalLight
-              position={[10, 10, 5]}
-              intensity={2.5}
-              color={"white"}
-            />
+    <div className="gymHeroMain">
+      {/* <div className="shushant">
+      <div className="sectionleft">
+      
+        <div className="gymHeroLink">
+  <Link to="/shop" onClick={scrollToTop}>
+    <button className="shopButton">Shop Now</button>
+  </Link>
+</div>
+</div>
 
-            <OrbitControls
-              enableZoom={false}
-              enablePan={false}
-              minAzimuthAngle={-Infinity}
-              maxAzimuthAngle={Infinity}
-              maxPolarAngle={Math.PI / 2}
-              minPolarAngle={Math.PI / 2}
-            />
+<div className="gymHeroLink">
+  <Link to="/shop" onClick={scrollToTop}>
+    <button className="shopButton">Shop Now</button>
+  </Link>
+</div>
+      </div> */}
 
-            <Model color={tshirtColor} />
-          </Canvas>
-          <div className="heroColorBtn">
-            <button
-              onClick={() => changeColor("#353933")}
-              style={{ backgroundColor: "#353933" }}
-            ></button>
-            <button
-              onClick={() => changeColor("#EFBD4E")}
-              style={{ backgroundColor: "#EFBD4E" }}
-            ></button>
-            <button
-              onClick={() => changeColor("#726DE7")}
-              style={{ backgroundColor: "#726DE7" }}
-            ></button>
-            <button
-              onClick={() => changeColor("red")}
-              style={{ backgroundColor: "red" }}
-            ></button>
-          </div>
-        </div>
+      <div className="sectionright">
+        {/* Use the image from the public/Assets folder */}
+        <img
+  src="/Assets/for-web1.png"
+  alt="Gym Training"
+  className="gymHeroImage"
+  style={{ width: "100%", height: "600px", marginRight: "200px"}}  // Adjust the width and height here
+/>
       </div>
-    </>
+      
+    </div>
+    
   );
 };
 
-export default HeroSection;
+export default GymHeroSection;

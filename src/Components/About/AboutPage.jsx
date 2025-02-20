@@ -1,8 +1,8 @@
 import React from "react";
 import "./AboutPage.css";
 
-import about1 from "../../Assets/About/about-1.jpg";
-import about2 from "../../Assets/About/about-2.jpg";
+import about1 from "../../Assets/About/about-1.png";
+import about2 from "../../Assets/About/about-1.jpg";
 
 import Services from "../../Components/Home/Services/Services";
 
@@ -22,39 +22,36 @@ const AboutPage = () => {
   return (
     <>
       <div className="aboutSection">
-        <h2>About Uomo</h2>
+        {/* <h2>About Fk Sports</h2> */}
         <img src={about1} alt="" />
         <div className="aboutContent">
           <h3>Our Story</h3>
           <h4>
-            Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-            cupidatat non proident, sunt in culpa qui officia deserunt mollit
-            anim id est laborum.
+          FK Sports is a family-owned company and inspired by the belief that the best sports products should be accessible to everyone. We are one of the leading store, 
+          based in Peterborough. We are an U.K. owned and operated business and have been selling a wide array of products.
+          We offer you a wide range of unique and high quality sport products, sourced directly from top manufacturers and sold 
+          to you at the lowest prices to ensure you get the best deal.
           </h4>
           <p>
-            Saw wherein fruitful good days image them, midst, waters upon, saw.
-            Seas lights seasons. Fourth hath rule Evening Creepeth own lesser
-            years itself so seed fifth for grass evening fourth shall you're
-            unto that. Had. Female replenish for yielding so saw all one to
-            yielding grass you'll air sea it, open waters subdue, hath. Brought
-            second Made. Be. Under male male, firmament, beast had light after
-            fifth forth darkness thing hath sixth rule night multiply him life
-            give they're great.
+          We think everyone should have access to high-quality, reasonably priced training tools so they can achieve their objectives.
+          Our selection of equipment has been thoughtfully created to provide a fantastic option for all strength levels and financial constraints.
+          We provide a selection of premium products at competitive prices. We have sourced the product directly 
+          from manufacturers in order to lower the cost of the product.Our Boston, UK warehouse is where all of our products are shipped from.
           </p>
           <div className="content1">
             <div className="contentBox">
-              <h5>Our Mission</h5>
+              <h5>Our Team</h5>
               <p>
-                Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat.
+              We take great pride in being a part of a great team that is dedicated to our purpose.
+              Our customer service representatives are accessible seven days a week and are always delighted to assist you with any questions you may have.
               </p>
             </div>
             <div className="contentBox">
-              <h5>Our Vision</h5>
+              <h5>Additional</h5>
               <p>
-                Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat.
+              To contact us, click here, or to learn more, see our FAQs. 
+              If you're interested in joining the team, please get in touch with us as we frequently have new positions available due to our rapid growth.
+              Don't forget to subscribe to our newsletter by clicking the link on the prescreen
               </p>
             </div>
           </div>

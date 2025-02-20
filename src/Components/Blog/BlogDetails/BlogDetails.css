@@ -72,11 +72,13 @@
 .blogDetailsContentImg {
   display: flex;
   gap: 30px;
+  height: 50%;
+  width: 50%;
 }
 
 .blogDetailsContentImg img {
-  width: 100%;
-  height: 100%;
+  width: 50%;
+  height: 50%;
 }
 
 /* share Buttons */
@@ -321,7 +323,7 @@
   }
 
   .blogDetailsContentImg img {
-    width: 100%;
+    width: 50%;
   }
 
   .share-button {
@@ -335,5 +337,76 @@
 
   .blogDetailsNextPrevContainer {
     align-items: flex-start;
+  }
+}
+/* ✅ New Layout: Text on Left, Images on Right */
+.blogDetailsContentContainer {
+  display: flex;
+  flex-direction: row; /* Arrange side by side */
+  gap: 40px;
+  padding: 50px 100px;
+  align-items: center;
+}
+
+/* Left Side - Text */
+.blogDetailsText {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.blogDetailsText p {
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.blogDetailsText h5 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Right Side - Images */
+.blogDetailsContentImg {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+.blogDetailsContentImg img {
+  width: 48%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 991px) {
+  .blogDetailsHeading {
+    padding: 0 25px;
+  }
+
+  .blogDetailsHeading h2 {
+    font-size: 40px;
+  }
+
+  /* Stack Content for Small Screens */
+  .blogDetailsContentContainer {
+    flex-direction: column;
+    padding: 50px 25px;
+  }
+
+  .blogDetailsContentImg {
+    justify-content: center;
+  }
+
+  .blogDetailsContentImg img {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .blogDetailsContentImg img {
+    width: 100%;
   }
 }
