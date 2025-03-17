@@ -1,12 +1,11 @@
 import React from "react";
-import LoginSignUp from "../Components/Authentication/LoginSign/LoginSignUp";
 
 const Authentication = () => {
   return (
-    <>
-      <LoginSignUp />
-    </>
+    <div>
+      <h1>Authentication Page</h1>
+    </div>
   );
 };
 
-export default Authentication;
+export default Authentication; // Ensure this is a default export

@@ -9,19 +9,20 @@ import { Link } from "react-router-dom";
 import StoreData from "../../../Data/StoreData";
 import { FiHeart } from "react-icons/fi";
 import { FaStar } from "react-icons/fa";
-import { IoFilterSharp, IoClose } from "react-icons/io5";
-import { FaAngleRight, FaAngleLeft } from "react-icons/fa6";
+import { IoFilterSharp } from "react-icons/io5";
 import { FaCartPlus } from "react-icons/fa";
 import toast from "react-hot-toast";
 
 const ShopDetails = () => {
   const dispatch = useDispatch();
-
   const [wishList, setWishList] = useState({});
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [filters, setFilters] = useState({ category: "all", sortBy: "default" });
   const [filteredProducts, setFilteredProducts] = useState(StoreData);
 
+  const cartItems = useSelector((state) => state.cart.items);
+
+  /** ✅ Handle Wishlist Toggle */
   const handleWishlistClick = (productID) => {
     setWishList((prevWishlist) => ({
       ...prevWishlist,
@@ -29,6 +30,7 @@ const ShopDetails = () => {
     }));
   };
 
+  /** ✅ Handle Filtering */
   const handleFilterChange = (e) => {
     setFilters({
       ...filters,
@@ -36,24 +38,28 @@ const ShopDetails = () => {
     });
   };
 
+  /** ✅ Smooth Scroll to Top */
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const toggleDrawer = () => {
-    setIsDrawerOpen(!isDrawerOpen);
-  };
+  /** ✅ Open/Close Filter Drawer */
+  const toggleDrawer = () => setIsDrawerOpen(!isDrawerOpen);
+  const closeDrawer = () => setIsDrawerOpen(false);
 
-  const closeDrawer = () => {
-    setIsDrawerOpen(false);
-  };
-
-  const cartItems = useSelector((state) => state.cart.items);
-
+  /** ✅ Handle Add to Cart */
   const handleAddToCart = (product) => {
-    const productInCart = cartItems.find(
-      (item) => item.productID === product.productID
-    );
+    console.log("🛒 Add to Cart clicked!", product);
+
+    const formattedProduct = {
+      id: product.productID,  // Ensure this matches Redux
+      name: product.productName,
+      price: product.productPrice,
+      image_url: product.frontImg,
+      quantity: 1,
+    };
+
+    const productInCart = cartItems.find((item) => item.id === formattedProduct.id);
 
     if (productInCart && productInCart.quantity >= 20) {
       toast.error("Product limit reached", {
@@ -62,7 +68,9 @@ const ShopDetails = () => {
         iconTheme: { primary: "#fff", secondary: "#ff4b4b" },
       });
     } else {
-      dispatch(addToCart(product));
+      dispatch(addToCart(formattedProduct));
+      console.log("🛍️ Product dispatched to Redux:", formattedProduct);
+
       toast.success(`Added to cart!`, {
         duration: 2000,
         style: { backgroundColor: "#07bc0c", color: "white" },
@@ -71,6 +79,7 @@ const ShopDetails = () => {
     }
   };
 
+  /** ✅ Apply Filters & Sorting */
   useEffect(() => {
     const filtered = StoreData.filter((product) =>
       filters.category === "all" ? true : product.category === filters.category
@@ -101,7 +110,9 @@ const ShopDetails = () => {
           <div className="shopDetails__left">
             <Filter products={StoreData} setFilteredProducts={setFilteredProducts} />
           </div>
+
           <div className="shopDetails__right">
+            {/* 🔹 Sorting & Breadcrumb */}
             <div className="shopDetailsSorting">
               <div className="shopDetailsBreadcrumbLink">
                 <Link to="/" onClick={scrollToTop}>Home</Link>
@@ -122,37 +133,46 @@ const ShopDetails = () => {
                 </select>
               </div>
             </div>
+
+            {/* 🔹 Products List */}
             <div className="shopDetailsProducts">
               <div className="shopDetailsProductsContainer">
                 {filteredProducts.map((product) => (
                   <div className="sdProductContainer" key={product.productID}>
                     <div className="sdProductImages">
-                      <Link to="/Product" onClick={scrollToTop}>
-                        <img src={product.frontImg} alt="" className="sdProduct_front" />
-                        <img src={product.backImg} alt="" className="sdProduct_back" />
+                      <Link to={`/product/${product.productID}`} onClick={scrollToTop}>
+                        <img src={product.frontImg} alt={product.productName} className="sdProduct_front" />
+                        <img src={product.backImg} alt={product.productName} className="sdProduct_back" />
                       </Link>
                       <h4 onClick={() => handleAddToCart(product)}>Add to Cart</h4>
                     </div>
+
                     <div className="sdProductImagesCart" onClick={() => handleAddToCart(product)}>
                       <FaCartPlus />
                     </div>
+
                     <div className="sdProductInfo">
-                      {/* <div className="sdProductCategoryWishlist">
-                        <p>{product.category}</p>
-                        <FiHeart onClick={() => handleWishlistClick(product.productID)}
-                          style={{ color: wishList[product.productID] ? "red" : "#767676", cursor: "pointer" }} />
-                      </div> */}
                       <div className="sdProductNameInfo">
-                        <Link to="/product" onClick={scrollToTop}>
+                        <Link to={`/product/${product.productID}`} onClick={scrollToTop}>
                           <h5>{product.productName}</h5>
                         </Link>
                         <p>${product.productPrice}</p>
                       </div>
+
+                      {/* Wishlist Button */}
+                      <FiHeart
+                        onClick={() => handleWishlistClick(product.productID)}
+                        style={{
+                          color: wishList[product.productID] ? "red" : "#767676",
+                          cursor: "pointer",
+                        }}
+                      />
                     </div>
                   </div>
                 ))}
               </div>
             </div>
+            
           </div>
         </div>
       </div>

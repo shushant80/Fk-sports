@@ -1,0 +1,12 @@
+specVersion: "v1beta"
+serviceId: "fk-sports"
+location: "us-central1"
+schema:
+  source: "./schema"
+  datasource:
+    postgresql:
+      database: "fdcdb"
+      cloudSql:
+        instanceId: "fk-sports-fdc"
+      # schemaValidation: "COMPATIBLE"
+connectorDirs: ["./connector"]

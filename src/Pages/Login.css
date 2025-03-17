@@ -1,0 +1,87 @@
+/* Center the login form */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5; /* Light gray background */
+  }
+  
+  /* Login form styling */
+  .login-form {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #ddd;
+  }
+  
+  /* Title */
+  .login-form h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 600;
+  }
+  
+  /* Input fields */
+  .login-form input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    background: #f9f9f9;
+    color: #333;
+  }
+  
+  .login-form input::placeholder {
+    color: #999;
+  }
+  
+  /* Login button */
+  .login-form button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    background-color: #007bff; /* Blue primary color */
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  
+  .login-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Links for signup/forgot password */
+  .login-form p {
+    margin-top: 10px;
+    color: #666;
+    font-size: 14px;
+  }
+  
+  .login-form a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .login-form a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive */
+  @media (max-width: 600px) {
+    .login-form {
+      padding: 1.5rem;
+    }
+  }
+  
